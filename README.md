@@ -1,3 +1,3 @@
 # Simple ToDoList
 
-## For description watch [description](https://github.com/Programming-curios/todo-app/tree/master/assets/description.md)
+## for more detailed description refer to [description](https://github.com/Programming-curios/todo-app/tree/master/assets/description.md)
