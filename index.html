@@ -19,53 +19,79 @@
 </head>
 
 <body>
-    <div id="wrapper">
-    <header>
-        <h1>ToDo app</h1>
-    </header>
+<!-- 
+    <i class="fa fa-list-ul fa-3x" aria-hidden="true"></i>
+    <h1>Hello, ToDo List!</h1>
+-->
+    <div class="container main">
+        <div class="row todocard">
+            <div class="col-12 heading">
+                All Tasks
+            </div>
 
-    <nav class="top-menu">
-        <ul class="menu-main">
-            <li id="nav-all"><a href="" class="current">All tasks</a></li>
-            <li id="nav-task"><a href="">Active tasks</a></li>
-            <li id="nav-archive"><a href="">Archive tasks</a></li>
-        </ul>
-    </nav>
-
-    <article>
-        <section>
-            <h2>Task 1 Title</h2>
-            <p>Task 1 description></p>
-        </section>
-        <section>
-            <h2>Task 2 Title</h2>
-            <p>Task 2 description></p>
-        </section>
-        <section>
-            <h2>Task 3 Title</h2>
-            <p>Task 3 description></p>
-        </section>
-    </article>
-
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-6 offset-3 todo-list">
-                    <h3 class="text-center text-uppercase display-2">heading</h3>
-                    <p class="lead text-neutral">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore fugiat
-                        repellat totam
-                        nulla maiores, praesentium consectetur quia molestiae sunt, velit, laborum cum quaerat dicta
-                        placeat.
-                    </p>
+            <div class="col-12">
+                <div class="todoitem">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="textitem">Learn git and github</p>
+                        </div>
+                        <div class="col"><a href="#" class="btn ellipse"></a></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+            <div class="col-12">
+                <div class="todoitem">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="textitem">Practice with CSS</p>
+                        </div>
+                        <div class="col"><a href="#" class="btn ellipse"></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="todoitem">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="textitem strikeout">Practice with HTML</p>
+                        </div>
+                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="todoitem">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="textitem strikeout">Setting the environment</p>
+                        </div>
+                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="todoitem">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="textitem strikeout">Learn javascript</p>
+                        </div>
+                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="todoitem">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="textitem strikeout">Choose the editor</p>
+                        </div>
+                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
+                    </div>
+                </div>
+            </div>
 
-    <footer>
-        <a href="https://github.com/Programming-curios/todo-app">GitHub repository</a>
-    </footer>
+        </div>
+    </div>
 
     <script src="./node_modules/argon-design-system-free/assets/vendor/jquery/jquery.min.js">
     </script>
@@ -75,7 +101,6 @@
     </script>
     <script src="./node_modules/argon-design-system-free/assets/js/argon.js"></script>
     <script src="./js/todo.js"></script>
-</div>
 </body>
 
 </html>
