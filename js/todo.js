@@ -1,11 +1,13 @@
 const jsonURL = "https://api.myjson.com/bins/dwbh4";
 
 let tasks = []; // all tasks array: 0 - completed, 1 - active
-let app_name;
-let copyright;
-let version;
-let active_tasks;
-let complete_tasks;
+let maxTask = 0;
+let app_name = "ToDo";
+let copyright = "2019-04-30";
+let version = 1;
+let active_tasks = [];
+let complete_tasks = [];
+let new_tasks = [];
 
 function onLoad() {
     $.getJSON(jsonURL, function (data) {
@@ -32,10 +34,14 @@ function onLoad() {
             numTask++;
             $("#complete_tasks").append(str);
         });
+        
+        maxTask = numTask - 1;
 
-        addOnClick(); // Add event handler
+        addOnClick(""); // Add event handler
+        $('.bottom').click(function (e) { e.preventDefault(); addTask(); return false; });
 
         $(".wait").remove(); // delete animated gif
+        $("#newtask").removeClass("invisible"); // show NEW button
     });
 }
 
@@ -48,17 +54,22 @@ function setStrDiv(el, num, strikeout, checked) {
 }
 
 // Attach an event handler function for class .btn
-function addOnClick() {
-    $(".btn").on('click', function (event) {
+function addOnClick(idBtn) {
+    let filter = (idBtn === "") ? ".btn" : idBtn;
+    console.log(filter);
+    $(filter).on('click', function (event) {
+        event.preventDefault();
         let id = event.target.attributes[0].value.substr(2);
         let numId = Number.parseInt(id);
-        tasks[numId] = 1 - tasks[numId];
-        if (tasks[numId] === 0) {
-            $("#id" + id).addClass("checked");
-            $("#ida" + id).addClass("strikeout");
-        } else {
-            $("#id" + id).removeClass("checked");
-            $("#ida" + id).removeClass("strikeout");
+        if (!Number.isNaN(numId)) {
+            tasks[numId] = 1 - tasks[numId];
+            if (tasks[numId] === 0) {
+                $("#id" + id).addClass("checked");
+                $("#ida" + id).addClass("strikeout");
+            } else {
+                $("#id" + id).removeClass("checked");
+                $("#ida" + id).removeClass("strikeout");
+            }
         }
         saveJson();
     })
@@ -83,7 +94,7 @@ function saveJson() {
 // Create json data
 function createJson() {
     let data = "{";
-    
+
     data += '"app_name":"' + app_name + '",';
     data += '"version":' + version + ',';
     data += '"copyright":"' + copyright + '",';
@@ -108,8 +119,21 @@ function createJson() {
 
     active_tasks.forEach(element => setOneTaskData(element));
     complete_tasks.forEach(element => setOneTaskData(element));
+    new_tasks.forEach(element => setOneTaskData(element));
 
     data += strActive + '],"complete_tasks": [' + strCompleted + ']}';
 
     return data;
+}
+
+// Add new task
+function addTask() {
+    maxTask++;
+    let textTask = "Task #" + maxTask;
+    new_tasks.push(textTask);
+    let str = setStrDiv(textTask, maxTask, '', '');
+    tasks[maxTask] = 1;
+    $("#new_tasks").append(str);
+    addOnClick("#id" + maxTask); // Add event handler
+    saveJson();
 }
