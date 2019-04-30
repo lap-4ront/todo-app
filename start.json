@@ -1,0 +1,15 @@
+{
+  "app_name": "ToDo",
+  "version": 1,
+  "copyright": "2019-04-30",
+  "active_tasks": [
+    "Learn git and github",
+    "Practice with CSS",
+    "Practice with HTML"
+  ],
+  "complete_tasks": [
+    "Setting the environment",
+    "Learn javascript",
+    "Choose the editor"
+  ]
+}

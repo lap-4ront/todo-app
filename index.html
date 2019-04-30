@@ -18,79 +18,27 @@
     <link href="./css/todo.css" rel="stylesheet">
 </head>
 
-<body>
-<!-- 
-    <i class="fa fa-list-ul fa-3x" aria-hidden="true"></i>
-    <h1>Hello, ToDo List!</h1>
--->
-    <div class="container main">
-        <div class="row todocard">
-            <div class="col-12 heading">
+<body onload="onLoad()">
+    <div class="container todocard">
+        <div class="row">
+            <div class="col heading">
                 All Tasks
             </div>
-
-            <div class="col-12">
-                <div class="todoitem">
-                    <div class="row">
-                        <div class="col-9">
-                            <p class="textitem">Learn git and github</p>
-                        </div>
-                        <div class="col"><a href="#" class="btn ellipse"></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="todoitem">
-                    <div class="row">
-                        <div class="col-9">
-                            <p class="textitem">Practice with CSS</p>
-                        </div>
-                        <div class="col"><a href="#" class="btn ellipse"></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="todoitem">
-                    <div class="row">
-                        <div class="col-9">
-                            <p class="textitem strikeout">Practice with HTML</p>
-                        </div>
-                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="todoitem">
-                    <div class="row">
-                        <div class="col-9">
-                            <p class="textitem strikeout">Setting the environment</p>
-                        </div>
-                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="todoitem">
-                    <div class="row">
-                        <div class="col-9">
-                            <p class="textitem strikeout">Learn javascript</p>
-                        </div>
-                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="todoitem">
-                    <div class="row">
-                        <div class="col-9">
-                            <p class="textitem strikeout">Choose the editor</p>
-                        </div>
-                        <div class="col"><a href="#" class="btn ellipse checked"></a></div>
-                    </div>
-                </div>
-            </div>
-
         </div>
+
+        <div class="container text-center wait">
+            <!-- animated gif -->
+            <img src="./img/wait.gif">
+        </div>
+
+        <div id="active_tasks" class="container tasks">
+            <!-- active_tasks  -->
+        </div>
+
+        <div id="complete_tasks" class="container tasks">
+            <!-- complete_tasks -->
+        </div>
+
     </div>
 
     <script src="./node_modules/argon-design-system-free/assets/vendor/jquery/jquery.min.js">
