@@ -49,18 +49,20 @@ function onLoad() {
 function setStrDiv(el, num, strikeout, checked) {
     return '<div class="row todoitem">'
         + '<div id="ida' + num + '" class="col textitem ' + strikeout + '">' + el + '</div>'
-        + '<div class="col-1"><a id="id' + num + '" href="#" class="btn ellipse ' + checked + '"></a></div>'
+        + '<div class="col-1"><a id="id' + num + '" href="#" class="btn ellipse ' + checked + '">'
+        + '<i id="fa' + num + '" class="fa fa-check" aria-hidden="true"></i></a></div>'
         + '</div>';
 }
 
 // Attach an event handler function for class .btn
 function addOnClick(idBtn) {
     let filter = (idBtn === "") ? ".btn" : idBtn;
-    console.log(filter);
+    // console.log(filter);
     $(filter).on('click', function (event) {
         event.preventDefault();
         let id = event.target.attributes[0].value.substr(2);
         let numId = Number.parseInt(id);
+        console.log(id);
         if (!Number.isNaN(numId)) {
             tasks[numId] = 1 - tasks[numId];
             if (tasks[numId] === 0) {

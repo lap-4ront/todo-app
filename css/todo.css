@@ -69,19 +69,24 @@
     margin: -2px 0px 0px 0px;
     background: #FFFFFF;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2), 0px 0px 8px rgba(0, 0, 0, 0.2);
+    font-size: 25px;
+    color: #FFFFFF;
 }
 
 .ellipse:hover {
     background: #eeeeee;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4), 0px 0px 8px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
 }
 
 .checked {
     background: #6A43BC;
+    color: #FFFF00;
 }
 
 .ellipse.checked:hover {
     background: #9A43BC;
+    color: #d8d800;
 }
 
 .strikeout {
