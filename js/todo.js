@@ -11,14 +11,6 @@ function onLoad() {
 
         let numTask = 1; // Current task number for div id
 
-        // create html-text for task div
-        function setStrDiv(el, num, strikeout, checked) {
-            return '<div id="id' + num + '" class="row todoitem">'
-                + '<div class="col textitem ' + strikeout + '">' + el + '</div>'
-                + '<div class="col-1"><a href="#" class="btn ellipse ' + checked + '"></a></div>'
-                + '</div>';
-        }
-
         // Add active tasks to task list
         active_tasks.forEach(element => {
             let str = setStrDiv(element, numTask, '', '');
@@ -35,6 +27,33 @@ function onLoad() {
             $("#active_tasks").append(str);
         });
 
+        addOnClick();
+
         $(".wait").remove(); // delete animated gif
     });
+
+}
+
+// create html-text for task div
+function setStrDiv(el, num, strikeout, checked) {
+    return '<div class="row todoitem">'
+        + '<div id="ida' + num + '" class="col textitem ' + strikeout + '">' + el + '</div>'
+        + '<div class="col-1"><a id="id' + num + '" href="#" class="btn ellipse ' + checked + '"></a></div>'
+        + '</div>';
+}
+
+// Attach an event handler function for class .btn
+function addOnClick() {
+    $(".btn").on('click', function (event) {
+        let id = event.target.attributes[0].value.substr(2);
+        let numId = Number.parseInt(id);
+        tasks[numId] = 1 - tasks[numId];
+        if (tasks[numId] === 0) {
+            $("#id" + id).addClass("checked");
+            $("#ida" + id).addClass("strikeout");
+        } else {
+            $("#id" + id).removeClass("checked");
+            $("#ida" + id).removeClass("strikeout");
+        }
+    })
 }
