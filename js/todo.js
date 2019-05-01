@@ -34,7 +34,7 @@ function onLoad() {
             numTask++;
             $("#complete_tasks").append(str);
         });
-        
+
         maxTask = numTask - 1;
 
         addOnClick(""); // Add event handler
@@ -42,13 +42,19 @@ function onLoad() {
 
         $(".wait").remove(); // delete animated gif
         $("#newtask").removeClass("invisible"); // show NEW button
+
+        $(window).on("beforeunload unload", function () {
+            saveJson();
+        });
+
     });
 }
 
 // create html-text for task div
 function setStrDiv(el, num, strikeout, checked) {
     return '<div class="row todoitem">'
-        + '<div id="ida' + num + '" class="col textitem ' + strikeout + '">' + el + '</div>'
+        + '<div id="ida' + num + '" class="col textitem ' + strikeout
+        + '" contenteditable="true" onblur="onBlur(this)">' + el + '</div>'
         + '<div class="col-1"><a id="id' + num + '" href="#" class="btn ellipse ' + checked + '">'
         + '<i id="fa' + num + '" class="fa fa-check" aria-hidden="true"></i></a></div>'
         + '</div>';
@@ -57,12 +63,10 @@ function setStrDiv(el, num, strikeout, checked) {
 // Attach an event handler function for class .btn
 function addOnClick(idBtn) {
     let filter = (idBtn === "") ? ".btn" : idBtn;
-    // console.log(filter);
     $(filter).on('click', function (event) {
         event.preventDefault();
         let id = event.target.attributes[0].value.substr(2);
         let numId = Number.parseInt(id);
-        console.log(id);
         if (!Number.isNaN(numId)) {
             tasks[numId] = 1 - tasks[numId];
             if (tasks[numId] === 0) {
@@ -74,7 +78,12 @@ function addOnClick(idBtn) {
             }
         }
         saveJson();
-    })
+    });
+}
+
+// Focus
+function onBlur(el) {
+    saveJson();
 }
 
 // Save changes
@@ -106,15 +115,18 @@ function createJson() {
     let strActive = "";
     let strCompleted = "";
 
-    function setOneTaskData(el) {
-        if (tasks[numTask] === 1) {
-            if (strActive !== "")
-                strActive += ',';
-            strActive += '"' + el + '"';
-        } else {
-            if (strCompleted !== "")
-                strCompleted += ',';
-            strCompleted += '"' + el + '"';
+    function setOneTaskData(element) {
+        el = $("#ida" + numTask).text();
+        if (el !== "") {
+            if (tasks[numTask] === 1) {
+                if (strActive !== "")
+                    strActive += ',';
+                strActive += '"' + el + '"';
+            } else {
+                if (strCompleted !== "")
+                    strCompleted += ',';
+                strCompleted += '"' + el + '"';
+            }
         }
         numTask++;
     }
@@ -131,11 +143,11 @@ function createJson() {
 // Add new task
 function addTask() {
     maxTask++;
-    let textTask = "Task #" + maxTask;
+    let textTask = "";
     new_tasks.push(textTask);
     let str = setStrDiv(textTask, maxTask, '', '');
     tasks[maxTask] = 1;
     $("#new_tasks").append(str);
-    addOnClick("#id" + maxTask); // Add event handler
-    saveJson();
+    addOnClick("#id" + maxTask); // Add event handler    
+    $("#ida" + maxTask).focus();
 }
