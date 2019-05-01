@@ -55,7 +55,7 @@ function setStrDiv(el, num, strikeout, checked) {
     return '<div class="row todoitem">'
         + '<div id="ida' + num + '" class="col textitem ' + strikeout
         + '" contenteditable="true" onblur="onBlur(this)">' + el + '</div>'
-        + '<div class="col-1"><a id="id' + num + '" href="#" class="btn ellipse ' + checked + '">'
+        + '<div class="col-1-auto"><a id="id' + num + '" href="#" class="btn ellipse ' + checked + '">'
         + '<i id="fa' + num + '" class="fa fa-check" aria-hidden="true"></i></a></div>'
         + '</div>';
 }

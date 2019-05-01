@@ -1,7 +1,8 @@
 /* ToDo Card */
 
 .todocard {
-    width: 500px;
+    width: 100%;
+    min-width: 480px;
     min-height: 900px;
     padding: 10px;
     background: linear-gradient(0deg, #3A68AD, #3A68AD);
@@ -41,7 +42,7 @@
     width: 90%;
     height: 55px;
     margin: 5%;
-    padding: 10px 30px 0px 10px;
+    padding: 10px 1% 0px 10px;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15), 0px 2px 2px rgba(0, 0, 0, 0.15);
     border-radius: 35px;
@@ -111,7 +112,7 @@
 }
 
 .plus {
-    padding-top: 14px;
+    padding-top: 13px;
     font-size: 100px;
     text-align: center;
     color: #FFFF00;
